@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Currency Converter</h1>
+        <div class="buttons-box">
+            <label for="fromCurrency">From:</label>
+            <label for="toCurrency">To:</label>
+            
+            <select id="fromCurrency">
+                <option value="INR">Indian Ruppe (INR)</option>
+                <option value="USD">US Dollar (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="JPY">Japanese Yen (JPY)</option>
+            </select>
+    
+            <select id="toCurrency">
+                <option value="INR">Indian Ruppe (INR)</option>
+                <option value="USD">US Dollar (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="JPY">Japanese Yen (JPY)</option>
+            </select>
+
+            <input type="number" id="amount" placeholder="Enter amount">
+            
+            <input type="number" id="result" placeholder="Changed amount" readonly>
+            
+        </div>
+    
+        <button onclick="convertCurrency()">Convert</button>
+    </div>
+
+    <script>
+        function convertCurrency() {
+            const fromCurrency = document.getElementById("fromCurrency").value;
+            const toCurrency = document.getElementById("toCurrency").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+
+            const exchangeRates = {
+                "INR": 1,
+                "USD": 0.012,
+                "EUR": 0.011,
+                "JPY": 1.80
+            };
+
+            const result = ((amount / exchangeRates[fromCurrency]) * exchangeRates[toCurrency]).toFixed(2);
+            document.getElementById("result").value = result;
+        }
+    </script>
+</body>
+</html>
